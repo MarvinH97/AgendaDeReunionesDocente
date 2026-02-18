@@ -48,6 +48,7 @@
                 </button>
                 <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Login.aspx">Inicio Sessión</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/Docentes.aspx">Docentes</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/About">Reuniones</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/Contact">Actas</a></li>
