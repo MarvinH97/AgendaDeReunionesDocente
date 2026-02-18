@@ -11,6 +11,14 @@ namespace AgendaDeReunionesDocente
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                txtNombres.Focus();
+            }
+        }
+
+        protected void btnGuardar_Click(object sender, EventArgs e)
+        {
 
         }
     }

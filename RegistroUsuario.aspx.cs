@@ -7,23 +7,19 @@ using System.Web.UI.WebControls;
 
 namespace AgendaDeReunionesDocente
 {
-    public partial class Login : System.Web.UI.Page
+    public partial class RegistroUsuario : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                txtUsuario.Focus();
+                txtNombres.Focus();
             }
         }
 
-        protected void btnLogin_Click(object sender, EventArgs e)
+        protected void btnVolver_Click(object sender, EventArgs e)
         {
-            if (IsPostBack)
-            {
-                Session["Usuario"] = txtUsuario.Text;
-                Response.Redirect("~/Docentes.aspx");
-            }
+            Response.Redirect("~/Login.aspx");
         }
     }
 }

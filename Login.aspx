@@ -30,7 +30,7 @@
                             </div>
                             <div class="mb-3 d-flex justify-content-between">
                                 <asp:Button ID="btnLogin" runat="server" Text="Iniciar Sesión" CssClass="btn btn-primary" OnClick="btnLogin_Click" />
-                                <span>No posee cuenta, <a href="#">Registrarse</a></span>
+                                <span>No posee cuenta, <a runat="server" href="~/RegistroUsuario.aspx">Registrarse</a></span>
                             </div>
                         </div>
                     </div>

@@ -4,7 +4,7 @@
         <div class="col-6 offset-3">
             <div class="card">
                  <div class="card-header text-center">
-                     <h5>Formulario de Docente</h5>
+                     <h5>REGISTRAR DOCENTE</h5>
                  </div>
                  <div class="card-body">
                     <div class="mb-3">
@@ -40,7 +40,7 @@
                         <asp:TextBox ID="txtTelefono" runat="server" CssClass="form-control"></asp:TextBox>
                     </div>
                     <div class="mb-3">
-                        <asp:Button ID="btnGuardar" runat="server" Text="Guardar" CssClass="btn btn-primary" />
+                        <asp:Button ID="btnGuardar" runat="server" Text="Guardar" CssClass="btn btn-primary" OnClick="btnGuardar_Click" />
                     </div>
                  </div>
             </div>
