@@ -21,5 +21,26 @@ namespace AgendaDeReunionesDocente
         {
             Response.Redirect("~/Login.aspx");
         }
+
+        protected void cvGenero_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            if (rblGenero.SelectedItem == null || (rblGenero.SelectedItem.Value != "M" && rblGenero.SelectedItem.Value != "F"))
+            {
+                args.IsValid = false;
+            }
+            else 
+            {
+                args.IsValid = true;
+            }
+        }
+
+        protected void btnGuardar_Click(object sender, EventArgs e)
+        {
+            if (Page.IsValid)
+            {
+                dsRegistroUsuario.Insert();
+                Response.Redirect("~/Login.aspx");
+            }
+        }
     }
 }

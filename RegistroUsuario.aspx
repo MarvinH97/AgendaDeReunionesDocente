@@ -7,6 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
      <webopt:bundlereference runat="server" path="~/Content/css" />
+    <!-- SWEETALERT --> 
+    <link href="Content/SweetAlert/sweetalert2.min.css" rel="stylesheet" />
 </head>
 <body>
     <div class="container">
@@ -36,9 +38,19 @@
                         </div>
                         <div class="mb-3">
                             <asp:Label ID="lblGenero" runat="server" Text="Género: "></asp:Label>
-                            <asp:RadioButton ID="rbMasculino" runat="server" Text="Masculino" GroupName="Genero" />
-                            &nbsp;
-                            <asp:RadioButton ID="rbFemenino" runat="server" Text="Femenino" GroupName="Genero" />
+                            <asp:RadioButtonList ID="rblGenero" runat="server" CellPadding="4" RepeatDirection="Horizontal">
+                                <asp:ListItem Value="M">Masculino</asp:ListItem>
+                                <asp:ListItem Value="F">Femenino</asp:ListItem>
+                            </asp:RadioButtonList>
+                            <asp:CustomValidator 
+                                ID="cvGenero" 
+                                runat="server" 
+                                Display="Dynamic" 
+                                ErrorMessage="Seleccione un Género" 
+                                Font-Italic="True" Font-Size="Small" 
+                                ForeColor="Red" 
+                                OnServerValidate="cvGenero_ServerValidate">
+                            </asp:CustomValidator>
                         </div>
                         <div class="mb-3">
                             <asp:Label ID="lblCorreo" runat="server" Text="Correo: "></asp:Label>
@@ -67,11 +79,39 @@
                                 CssClass="btn btn-secondary" 
                                 CausesValidation="false"
                                 OnClick="btnVolver_Click" />
-                            <asp:Button ID="btnGuardar" runat="server" Text="Guardar" CssClass="btn btn-primary" />
+                            <asp:Button ID="btnGuardar" runat="server" Text="Guardar" CssClass="btn btn-primary" OnClick="btnGuardar_Click" OnClientClick="return confirmarEliminar();" />
                         </div>
                      </form>
                  </div>
             </div>
+            <asp:SqlDataSource ID="dsRegistroUsuario" runat="server" ConnectionString="<%$ ConnectionStrings:AgendaReunionDocentesDBConnectionString %>" DeleteCommand="DELETE FROM [Usuario] WHERE [Id] = @Id" InsertCommand="INSERT INTO [Usuario] ([Nombres], [Apellidos], [Edad], [Genero], [Correo], [Telefono], [Usuario], [Clave], [EsDocente]) VALUES (@Nombres, @Apellidos, @Edad, @Genero, @Correo, @Telefono, @Usuario, @Clave, @EsDocente)" ProviderName="<%$ ConnectionStrings:AgendaReunionDocentesDBConnectionString.ProviderName %>" SelectCommand="SELECT [Id], [Nombres], [Apellidos], [Edad], [Genero], [Correo], [Telefono], [Usuario], [Clave], [EsDocente] FROM [Usuario]" UpdateCommand="UPDATE [Usuario] SET [Nombres] = @Nombres, [Apellidos] = @Apellidos, [Edad] = @Edad, [Genero] = @Genero, [Correo] = @Correo, [Telefono] = @Telefono, [Usuario] = @Usuario, [Clave] = @Clave, [EsDocente] = @EsDocente WHERE [Id] = @Id">
+                <DeleteParameters>
+                    <asp:Parameter Name="Id" Type="Int64" />
+                </DeleteParameters>
+                <InsertParameters>
+                    <asp:ControlParameter ControlID="txtNombres" Name="Nombres" PropertyName="Text" Type="String" />
+                    <asp:ControlParameter ControlID="txtApellidos" Name="Apellidos" PropertyName="Text" Type="String" />
+                    <asp:ControlParameter ControlID="txtEdad" Name="Edad" PropertyName="Text" Type="Int32" />
+                    <asp:ControlParameter ControlID="rblGenero" Name="Genero" PropertyName="SelectedValue" Type="Char" />
+                    <asp:ControlParameter ControlID="txtCorreo" Name="Correo" PropertyName="Text" Type="String" />
+                    <asp:ControlParameter ControlID="txtTelefono" Name="Telefono" PropertyName="Text" Type="String" />
+                    <asp:ControlParameter ControlID="txtUsuario" Name="Usuario" PropertyName="Text" Type="String" />
+                    <asp:ControlParameter ControlID="txtPassword" Name="Clave" PropertyName="Text" Type="String" />
+                    <asp:Parameter DefaultValue="False" Name="EsDocente" Type="Boolean" />
+                </InsertParameters>
+                <UpdateParameters>
+                    <asp:Parameter Name="Nombres" Type="String" />
+                    <asp:Parameter Name="Apellidos" Type="String" />
+                    <asp:Parameter Name="Edad" Type="Int32" />
+                    <asp:Parameter Name="Genero" Type="String" />
+                    <asp:Parameter Name="Correo" Type="String" />
+                    <asp:Parameter Name="Telefono" Type="String" />
+                    <asp:Parameter Name="Usuario" Type="String" />
+                    <asp:Parameter Name="Clave" Type="String" />
+                    <asp:Parameter Name="EsDocente" Type="Boolean" />
+                    <asp:Parameter Name="Id" Type="Int64" />
+                </UpdateParameters>
+            </asp:SqlDataSource>
         </div>
     </div>
     </div>
@@ -79,5 +119,24 @@
     <asp:PlaceHolder runat="server">
          <%: Scripts.Render("~/Scripts/bootstrap.js") %>
     </asp:PlaceHolder>
+    <script src="Scripts/SweetAlert/sweetalert2.all.min.js"></script>
+    <script>
+        function confirmarEliminar() {
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: 'Esta acción eliminará el registro',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Sí, eliminar',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    __doPostBack('btnGuardar', ''); // fuerza el postback al servidor
+                }
+            });
+            return false; // evita el postback inmediato
+        }
+
+    </script>
 </body>
 </html>

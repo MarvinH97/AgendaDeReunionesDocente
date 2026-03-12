@@ -114,22 +114,22 @@ namespace AgendaDeReunionesDocente
         protected global::System.Web.UI.WebControls.Label lblGenero;
 
         /// <summary>
-        /// Control rbMasculino.
+        /// Control rblGenero.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rbMasculino;
+        protected global::System.Web.UI.WebControls.RadioButtonList rblGenero;
 
         /// <summary>
-        /// Control rbFemenino.
+        /// Control cvGenero.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rbFemenino;
+        protected global::System.Web.UI.WebControls.CustomValidator cvGenero;
 
         /// <summary>
         /// Control lblCorreo.
@@ -256,5 +256,14 @@ namespace AgendaDeReunionesDocente
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnGuardar;
+
+        /// <summary>
+        /// Control dsRegistroUsuario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource dsRegistroUsuario;
     }
 }
