@@ -10,13 +10,11 @@
     <title><%: Page.Title %> - Mi aplicación ASP.NET</title>
 
     <asp:PlaceHolder runat="server">
-        <%: Scripts.Render("~/bundles/modernizr") %>
+        <%: @Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
 
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <%--<link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />--%>
-
 </head>
 <body>
     <form runat="server">
@@ -69,7 +67,19 @@
         </div>
     </form>
     <asp:PlaceHolder runat="server">
+        <%: @Scripts.Render("~/bundles/jquery") %>
         <%: Scripts.Render("~/Scripts/bootstrap.js") %>
+        <%: @Scripts.Render("~/bundles/inputmask") %>
+        <%: @Scripts.Render("~/bundles/sweetalert") %>
     </asp:PlaceHolder>
+    <!-- En Site.Master -->
+    <script>
+        $(document).ready(function () {
+            $("[data-mask]").each(function () {
+                var mask = $(this).attr("data-mask");
+                $(this).inputmask(mask);
+            });
+        });
+    </script>
 </body>
 </html>

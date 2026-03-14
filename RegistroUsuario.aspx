@@ -119,7 +119,7 @@
     <asp:PlaceHolder runat="server">
          <%: Scripts.Render("~/Scripts/bootstrap.js") %>
     </asp:PlaceHolder>
-    <script src="Scripts/SweetAlert/sweetalert2.all.min.js"></script>
+    <%--<script src="Scripts/SweetAlert/sweetalert2.all.min.js"></script>--%>
     <script>
         function confirmarEliminar() {
             Swal.fire({

@@ -24,6 +24,16 @@ namespace AgendaDeReunionesDocente
                             "~/Scripts/WebForms/TreeView.js",
                             "~/Scripts/WebForms/WebParts.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
+                            "~/Scripts/jquery-3.7.0.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/inputmask").Include(
+                            "~/Scripts/Inputmask/inputmask.min.js",
+                            "~/Scripts/Inputmask/jquery.inputmask.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/sweetalert").Include(
+                          "~/Scripts/SweetAlert/sweetalert2.all.min.js"));
+
             // El orden es muy importante para el funcionamiento de estos archivos ya que tienen dependencias explícitas
             bundles.Add(new ScriptBundle("~/bundles/MsAjaxJs").Include(
                     "~/Scripts/WebForms/MsAjax/MicrosoftAjax.js",
