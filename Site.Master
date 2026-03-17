@@ -48,7 +48,7 @@
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/Login.aspx">Inicio Sessión</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/Docentes.aspx">Docentes</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/RegistroReunion.aspx">Reuniones</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Reuniones.aspx">Reuniones</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/Contact">Actas</a></li>
                     </ul>
                     <span class="navbar-text">

@@ -127,6 +127,7 @@
     <Content Include="Login.aspx" />
     <Content Include="RegistroReunion.aspx" />
     <Content Include="RegistroUsuario.aspx" />
+    <Content Include="Reuniones.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -247,6 +248,13 @@
     </Compile>
     <Compile Include="RegistroUsuario.aspx.designer.cs">
       <DependentUpon>RegistroUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reuniones.aspx.cs">
+      <DependentUpon>Reuniones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reuniones.aspx.designer.cs">
+      <DependentUpon>Reuniones.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
