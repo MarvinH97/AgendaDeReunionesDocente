@@ -60,7 +60,7 @@
                         </div>
                         <div class="mb-3">
                             <asp:Label ID="lblTelefono" runat="server" Text="Teléfono: "></asp:Label>
-                            <asp:TextBox ID="txtTelefono" runat="server" CssClass="form-control"></asp:TextBox>
+                            <asp:TextBox ID="txtTelefono" runat="server" CssClass="form-control" data-mask="9999-9999"></asp:TextBox>
                         </div>
                         <div class="mb-3">
                             <asp:Label ID="lblUsuario" runat="server" Text="Usuario: "></asp:Label>
@@ -69,7 +69,7 @@
                         </div>
                         <div class="mb-3">
                             <asp:Label ID="lblPassword" runat="server" Text="Contraseña: "></asp:Label>
-                            <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control"></asp:TextBox>
+                            <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" TextMode="Password"></asp:TextBox>
                             <asp:RequiredFieldValidator runat="server" ControlToValidate="txtPassword" ErrorMessage="El campo es obligatorio" ID="rfvPassword" Font-Italic="True" Font-Size="Small" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
                         </div>
                         <div class="mb-3 d-flex justify-content-between">
@@ -79,7 +79,7 @@
                                 CssClass="btn btn-secondary" 
                                 CausesValidation="false"
                                 OnClick="btnVolver_Click" />
-                            <asp:Button ID="btnGuardar" runat="server" Text="Guardar" CssClass="btn btn-primary" OnClick="btnGuardar_Click" OnClientClick="return confirmarEliminar();" />
+                            <asp:Button ID="btnGuardar" runat="server" Text="Guardar" CssClass="btn btn-primary" OnClick="btnGuardar_Click" />
                         </div>
                      </form>
                  </div>
@@ -117,26 +117,17 @@
     </div>
 
     <asp:PlaceHolder runat="server">
+         <%: @Scripts.Render("~/bundles/jquery") %>
          <%: Scripts.Render("~/Scripts/bootstrap.js") %>
+         <%: @Scripts.Render("~/bundles/inputmask") %>
     </asp:PlaceHolder>
-    <%--<script src="Scripts/SweetAlert/sweetalert2.all.min.js"></script>--%>
     <script>
-        function confirmarEliminar() {
-            Swal.fire({
-                title: '¿Estás seguro?',
-                text: 'Esta acción eliminará el registro',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Sí, eliminar',
-                cancelButtonText: 'Cancelar'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    __doPostBack('btnGuardar', ''); // fuerza el postback al servidor
-                }
+        $(document).ready(function () {
+            $("[data-mask]").each(function () {
+                var mask = $(this).attr("data-mask");
+                $(this).inputmask(mask);
             });
-            return false; // evita el postback inmediato
-        }
-
+        });
     </script>
 </body>
 </html>

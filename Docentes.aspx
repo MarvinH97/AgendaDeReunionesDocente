@@ -25,10 +25,7 @@
                                 <asp:CheckBoxField DataField="EsDocente" HeaderText="EsDocente" SortExpression="EsDocente" Visible="False" />
                                 <asp:ButtonField ButtonType="Button" ShowHeader="True" Text="Editar" CommandName="Editar">
                                 <ControlStyle CssClass="btn btn-primary" />
-                                </asp:ButtonField>
-                               <%-- <asp:ButtonField ButtonType="Button" Text="Eliminar" CommandName="Eliminar">
-                                <ControlStyle CssClass="btn btn-danger" />
-                                </asp:ButtonField>--%>
+                                </asp:ButtonField>      
                                 <asp:TemplateField>
                                     <ItemTemplate>
                                         <asp:Button ID="btnEliminar"
